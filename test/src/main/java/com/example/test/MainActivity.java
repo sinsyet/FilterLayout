@@ -43,14 +43,14 @@ public class MainActivity extends AppCompatActivity implements FilterLayout.Menu
 
         mFilterLayout.setMenuSelectListener(this);
 
-        ListView textView = new ListView(this);
+        ListView listView = new ListView(this);
         final ArrayList<String> objects = new ArrayList<>();
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 objects);
-        textView.setAdapter(arrayAdapter);
-        mFilterLayout.setContentView(textView);
+        listView.setAdapter(arrayAdapter);
+        mFilterLayout.setContentView(listView);
 
         new Thread(new Runnable() {
             @Override
