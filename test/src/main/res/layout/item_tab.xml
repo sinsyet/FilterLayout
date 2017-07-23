@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:paddingLeft="3dp"
+        android:paddingTop="3dp"
+        android:paddingRight="3dp"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tab_tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="默认排序"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@drawable/selector_tab_textcolor"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/tab_iv_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tab_tv_content"
+            android:src="@drawable/selector_bilibili" />
+
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/tab_iv_triangle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tab_tv_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_triangle" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
