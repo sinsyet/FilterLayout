@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,9 +43,30 @@ public class MainActivity extends AppCompatActivity implements FilterLayout.Menu
 
         mFilterLayout.setMenuSelectListener(this);
 
-        TextView textView = new TextView(this);
-        textView.setText("正文");
+        ListView textView = new ListView(this);
+        final ArrayList<String> objects = new ArrayList<>();
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                objects);
+        textView.setAdapter(arrayAdapter);
         mFilterLayout.setContentView(textView);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 100; i++) {
+                    objects.add("item num " + i);
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        arrayAdapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        }).start();
     }
 
     private void initView() {
@@ -53,6 +76,6 @@ public class MainActivity extends AppCompatActivity implements FilterLayout.Menu
     @Override
     public void onMenuSelect(int tabPosition, int menuPosition) {
         String s = (String) arrayLists[tabPosition].get(menuPosition);
-        Toast.makeText(this, "s: "+s, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "s: " + s, Toast.LENGTH_SHORT).show();
     }
 }
